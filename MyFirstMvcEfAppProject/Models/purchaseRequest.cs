@@ -8,9 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace MyFirstMvcEfAppProject.Models {
     public class purchaseRequest {
         [Required]
-        public int ID { get; set; }
-        [Required]
-        public int UserID { get; set; }
+        public int ID { get; set; }      
         [MaxLength(100)]
         public string Description { get; set; }
         [Required]
@@ -27,5 +25,8 @@ namespace MyFirstMvcEfAppProject.Models {
         public decimal Total { get; set; }
         [Required]
         public DateTime SubmittedDate { get; set; }
+
+        public int UserID { get; set; }
+        public virtual User User { get; set; }
     }
 }

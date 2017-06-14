@@ -185,6 +185,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\lineItemsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\PurchaseRequestLineItemsController.cs" />
     <Compile Include="Controllers\purchaseRequestsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -232,11 +233,20 @@
     <Compile Include="Migrations\201706141806522_purchase-requests.Designer.cs">
       <DependentUpon>201706141806522_purchase-requests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706141933503_purchase-request-lineitem.cs" />
+    <Compile Include="Migrations\201706141933503_purchase-request-lineitem.Designer.cs">
+      <DependentUpon>201706141933503_purchase-request-lineitem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706141937060_purchase-request-lineitems-controller.cs" />
+    <Compile Include="Migrations\201706141937060_purchase-request-lineitems-controller.Designer.cs">
+      <DependentUpon>201706141937060_purchase-request-lineitems-controller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\lineItem.cs" />
     <Compile Include="Models\MyFirstMvcEfAppProjectContext.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\purchaseRequest.cs" />
+    <Compile Include="Models\PurchaseRequestLineItem.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -317,6 +327,11 @@
     <Content Include="Views\purchaseRequests\Details.cshtml" />
     <Content Include="Views\purchaseRequests\Edit.cshtml" />
     <Content Include="Views\purchaseRequests\Index.cshtml" />
+    <Content Include="Views\PurchaseRequestLineItems\Create.cshtml" />
+    <Content Include="Views\PurchaseRequestLineItems\Delete.cshtml" />
+    <Content Include="Views\PurchaseRequestLineItems\Details.cshtml" />
+    <Content Include="Views\PurchaseRequestLineItems\Edit.cshtml" />
+    <Content Include="Views\PurchaseRequestLineItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +381,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706141806522_purchase-requests.resx">
       <DependentUpon>201706141806522_purchase-requests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706141933503_purchase-request-lineitem.resx">
+      <DependentUpon>201706141933503_purchase-request-lineitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706141937060_purchase-request-lineitems-controller.resx">
+      <DependentUpon>201706141937060_purchase-request-lineitems-controller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

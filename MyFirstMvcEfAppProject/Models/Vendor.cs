@@ -11,6 +11,7 @@ namespace MyFirstMvcEfAppProject.Models {
         public int ID { get; set; }
         [Required]
         [MaxLength(10)]
+        [Index("VendorCodeUniqueIndex", IsUnique = true)]
         public string Code { get; set; }
         [Required]
         [MaxLength(255)]
