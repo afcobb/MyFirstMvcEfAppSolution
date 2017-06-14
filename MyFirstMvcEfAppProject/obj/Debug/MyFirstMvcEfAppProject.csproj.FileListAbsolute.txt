@@ -88,3 +88,4 @@ C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAp
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.purchaserequests.resources
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.purchaserequestlineitem.resources
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.purchaserequestlineitemscontroller.resources
+C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.updatestolayoutcshtmlindexcshtml.resources

@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201706141937060_purchase-request-lineitems-controller.Designer.cs">
       <DependentUpon>201706141937060_purchase-request-lineitems-controller.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706142019015_updates-to-layout.cshtml-index.cshtml.cs" />
+    <Compile Include="Migrations\201706142019015_updates-to-layout.cshtml-index.cshtml.Designer.cs">
+      <DependentUpon>201706142019015_updates-to-layout.cshtml-index.cshtml.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\lineItem.cs" />
     <Compile Include="Models\MyFirstMvcEfAppProjectContext.cs" />
@@ -387,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706141937060_purchase-request-lineitems-controller.resx">
       <DependentUpon>201706141937060_purchase-request-lineitems-controller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706142019015_updates-to-layout.cshtml-index.cshtml.resx">
+      <DependentUpon>201706142019015_updates-to-layout.cshtml-index.cshtml.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

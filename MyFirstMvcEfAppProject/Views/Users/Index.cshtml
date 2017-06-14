@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<MyFirstMvcEfAppProject.Models.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users";
 }
 
-<h2>Index</h2>
+<h2>Users</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,28 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            User Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            Full Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            Phone Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            Email Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone)
+            Reviewer?
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsReviewer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsAdmin)
+            Admin?
         </th>
         <th></th>
     </tr>
@@ -44,12 +38,7 @@
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
