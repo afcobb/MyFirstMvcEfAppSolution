@@ -15,11 +15,17 @@ namespace MyFirstMvcEfAppProject.Controllers
         private MyFirstMvcEfAppProjectContext db = new MyFirstMvcEfAppProjectContext();
 
         // GET: Users
-        public ActionResult Index() //Index() is the default name for bringing back lists of data 
+        public ActionResult List()
         {
-            return View(db.Users.ToList()); //
+            return Json(db.Users.ToList(), JsonRequestBehavior.AllowGet); //
         }
-
+        public ActionResult Get(int? id) {
+            return Json(db.Users.Find(id), JsonRequestBehavior.AllowGet);
+        }
+        //GET: Users
+        public ActionResult Index() {
+            return View(db.Users.ToList());
+        }
         // GET: Users/Details/5
         public ActionResult Details(int? id) //pass in an id, this brings back one user 
         {

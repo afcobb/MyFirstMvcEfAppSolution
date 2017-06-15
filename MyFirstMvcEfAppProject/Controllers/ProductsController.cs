@@ -36,9 +36,11 @@ namespace MyFirstMvcEfAppProject.Controllers
         }
 
         // GET: Products/Create
-        public ActionResult Create()
-        {
-            return View();
+        public ActionResult Create() {
+            ProductEditView pev = new ProductEditView {
+                Vendors = db.Vendors.ToList()
+            };
+            return View(pev);
         }
 
         // POST: Products/Create
