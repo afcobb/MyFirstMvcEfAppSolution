@@ -46,8 +46,17 @@ namespace MyFirstMvcEfAppProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,VendorId,Name,VendorPartNumber,Price,Unit,PhotoPath")] Product product)
+        public ActionResult Create([Bind(Include = "ID,VendorId,Name,VendorPartNumber,Price,Unit,PhotoPath")] ProductEditView pev)
         {
+            Product product = new Product {
+                ID = pev.ID,
+                VendorId = pev.VendorId,
+                Name = pev.Name,
+                VendorPartNumber = pev.VendorPartNumber,
+                Price = pev.Price,
+                Unit = pev.Unit,
+                PhotoPath = pev.PhotoPath
+            };
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -70,7 +79,18 @@ namespace MyFirstMvcEfAppProject.Controllers
             {
                 return HttpNotFound();
             }
-            return View(product);
+            ProductEditView pev = new ProductEditView {
+                ID = product.ID,
+                Name = product.Name,
+                VendorPartNumber = product.VendorPartNumber,
+                Price = product.Price,
+                Unit = product.Unit,
+                PhotoPath = product.PhotoPath,
+                VendorId = product.VendorId,
+                Vendors = db.Vendors.ToList()
+            };
+            return View(pev);
+            // return view
         }
 
         // POST: Products/Edit/5

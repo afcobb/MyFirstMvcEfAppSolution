@@ -245,10 +245,23 @@
     <Compile Include="Migrations\201706142019015_updates-to-layout.cshtml-index.cshtml.Designer.cs">
       <DependentUpon>201706142019015_updates-to-layout.cshtml-index.cshtml.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706151400453_updated-user-details.cs" />
+    <Compile Include="Migrations\201706151400453_updated-user-details.Designer.cs">
+      <DependentUpon>201706151400453_updated-user-details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706151744049_created-producteditview.cs" />
+    <Compile Include="Migrations\201706151744049_created-producteditview.Designer.cs">
+      <DependentUpon>201706151744049_created-producteditview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706151807214_updates-to-produccontrol.cs" />
+    <Compile Include="Migrations\201706151807214_updates-to-produccontrol.Designer.cs">
+      <DependentUpon>201706151807214_updates-to-produccontrol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\lineItem.cs" />
     <Compile Include="Models\MyFirstMvcEfAppProjectContext.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductEditView.cs" />
     <Compile Include="Models\purchaseRequest.cs" />
     <Compile Include="Models\PurchaseRequestLineItem.cs" />
     <Compile Include="Models\User.cs" />
@@ -336,6 +349,7 @@
     <Content Include="Views\PurchaseRequestLineItems\Details.cshtml" />
     <Content Include="Views\PurchaseRequestLineItems\Edit.cshtml" />
     <Content Include="Views\PurchaseRequestLineItems\Index.cshtml" />
+    <Content Include="Views\Products\Edit Orig.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,6 +408,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706142019015_updates-to-layout.cshtml-index.cshtml.resx">
       <DependentUpon>201706142019015_updates-to-layout.cshtml-index.cshtml.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706151400453_updated-user-details.resx">
+      <DependentUpon>201706151400453_updated-user-details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706151744049_created-producteditview.resx">
+      <DependentUpon>201706151744049_created-producteditview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706151807214_updates-to-produccontrol.resx">
+      <DependentUpon>201706151807214_updates-to-produccontrol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
