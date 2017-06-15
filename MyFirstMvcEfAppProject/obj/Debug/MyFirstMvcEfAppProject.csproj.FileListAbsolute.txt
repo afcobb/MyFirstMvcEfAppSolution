@@ -92,3 +92,4 @@ C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAp
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.updateduserdetails.resources
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.createdproducteditview.resources
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.updatestoproduccontrol.resources
+C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.jsonupdates.resources

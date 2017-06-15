@@ -257,6 +257,10 @@
     <Compile Include="Migrations\201706151807214_updates-to-produccontrol.Designer.cs">
       <DependentUpon>201706151807214_updates-to-produccontrol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706152025043_json-updates.cs" />
+    <Compile Include="Migrations\201706152025043_json-updates.Designer.cs">
+      <DependentUpon>201706152025043_json-updates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\lineItem.cs" />
     <Compile Include="Models\MyFirstMvcEfAppProjectContext.cs" />
@@ -417,6 +421,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706151807214_updates-to-produccontrol.resx">
       <DependentUpon>201706151807214_updates-to-produccontrol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706152025043_json-updates.resx">
+      <DependentUpon>201706152025043_json-updates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
