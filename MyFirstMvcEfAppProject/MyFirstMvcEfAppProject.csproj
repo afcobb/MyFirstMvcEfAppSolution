@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201706152025043_json-updates.Designer.cs">
       <DependentUpon>201706152025043_json-updates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706161609174_remove-add-change.cs" />
+    <Compile Include="Migrations\201706161609174_remove-add-change.Designer.cs">
+      <DependentUpon>201706161609174_remove-add-change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\lineItem.cs" />
     <Compile Include="Models\MyFirstMvcEfAppProjectContext.cs" />
@@ -424,6 +428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706152025043_json-updates.resx">
       <DependentUpon>201706152025043_json-updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706161609174_remove-add-change.resx">
+      <DependentUpon>201706161609174_remove-add-change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

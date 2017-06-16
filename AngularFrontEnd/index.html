@@ -3,17 +3,24 @@
 <head><title></title>
 <!--Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script> 
-
 <!-- Angular -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script lang="javascrip">
-$(document).ready(function() {
-	$.getJSON("http://localhost:21386/Users/List", function(resp) {
-			console.log(resp);	
-	});
+<script lang="javascript">
+$().ready(function() {
+
+	var user = {}
+	user.UserName = 'ZZZ';
+	user.FirstName = 'ZZZ';
+	user.LastName = 'ZZZ';
+	user.Password = 'ZZZ';
+	user.Phone = 'ZZZ';
+	user.Email = 'ZZZ';
+	user.IsAdmin = false;
+	user.IsReviewer = false;
+
+
 });
 
 </script>
