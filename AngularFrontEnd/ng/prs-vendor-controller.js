@@ -1,12 +1,11 @@
 angular.module("PrsApp")
 	.controller("VendorCtrl", VendorCtrl);
 
-VendorCtrl.$inject = ["$http", "$routeParams"];
+VendorCtrl.$inject = ["$http", "$routeParams", "$location"];
 
-function VendorCtrl($http, $routeParams) {
+function VendorCtrl($http, $routeParams, $location) {
 		var self = this;
 	self.SelectedVendorId = $routeParams.id;
-	self.SelectedVendor = null;
 	self.PageTitle = "Vendor";
 
 	self.Vendors = [];
@@ -31,4 +30,18 @@ function VendorCtrl($http, $routeParams) {
 					console.log("Error", err);
 			}
 		)
+
+	self.Update = function(vendor) {
+		$http.post("http://localhost:21386/Vendors/Change", vendor)
+		.then(
+						function(resp) {
+				console.log("Success", resp);
+					$location.path("/vendors")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
 }

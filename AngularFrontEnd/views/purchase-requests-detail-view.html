@@ -1,0 +1,66 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+</div>
+		<table class="table">
+			<tbody>
+			<tr>
+					<td>
+					<span class="DetailHeading">Id</span>
+					</td>
+					<td>
+					<span ng-bind="ctrl.SelectedPurchaseRequest.Id"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Description</span>
+					</td>
+					<td><span ng-bind="purchaseRequest.Description"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Justification</span>
+					</td>
+					</td><span ng-bind="purchaseRequest.Justification"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Date Needed</span>
+					</td>
+					<td><span ng-bind="purchaseRequest.DateNeeded"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Delivery Mode</span>
+					</td>
+					<td><span ng-bind="purchaseRequest.DeliveryMode"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Docs Attached</span>
+					</td>
+					<td><span ng-bind="purchaseRequest.DocsAttached"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Status</span>
+					</td>
+					<td><span ng-bind="purchaseRequest.Status"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Total</span>
+					</td>
+					<td><span ng-bind="purchaseRequest.Total"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Submitted Date</span>
+					</td>
+					<td><span ng-bind="purchaseRequest.SubmittedDate"></span></td>
+				</tr>
+			</tbody>
+			</table>
+			<span><a href="/purchaseRequests/get/{{purchaseRequest.ID}}">Edit</a></span>
+		</div>
+</div>

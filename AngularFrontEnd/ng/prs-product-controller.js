@@ -1,12 +1,11 @@
 angular.module("PrsApp")
 	.controller("ProductCtrl", ProductCtrl);
 
-ProductCtrl.$inject = ["$http", "$routeParams"];
+ProductCtrl.$inject = ["$http", "$routeParams", "$location"];
 
-function ProductCtrl($http, $routeParams) {
+function ProductCtrl($http, $routeParams, $location) {
 	var self = this;
 	self.SelectedProductId = $routeParams.id;
-	self.SelectedProduct = null;
 	self.PageTitle = "Product";
 
 	self.Products = [];
@@ -35,4 +34,19 @@ function ProductCtrl($http, $routeParams) {
 					console.log("Error", err);
 			}
 		)
+
+	self.Update = function(product) {
+		console.log("Here")
+		$http.post("http://localhost:21386/Products/Change", product)
+		.then(
+			function(resp) {
+				console.log("Success", resp);
+					$location.path("/products")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
 }

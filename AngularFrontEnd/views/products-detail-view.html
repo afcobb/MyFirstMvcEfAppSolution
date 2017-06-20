@@ -15,34 +15,34 @@
 					<td>
 					<span class="DetailHeading">Name</span>
 					</td>
-					<td><span ng-bind="product.Name"></span></td>
+					<td><span ng-bind="ctrl.SelectedProduct.Name"></span></td>
 				</tr>
 				<tr>
 					<td>
 					<span class="DetailHeading">VendorPartNumber</span>
 					</td>
-					</td><span ng-bind="product.VendorPartNumber"></span></td>
+					</td><span ng-bind="ctrl.SelectedProduct.VendorPartNumber"></span></td>
 				</tr>
 				<tr>
 					<td>
 					<span class="DetailHeading">Price</span>
 					</td>
-					<td><span ng-bind="product.Price"></span></td>
+					<td><span ng-bind="ctrl.SelectedProduct.Price"></span></td>
 				</tr>
 				<tr>
 					<td>
 					<span class="DetailHeading">Unit</span>
 					</td>
-					<td><span ng-bind="product.Unit"></span></td>
+					<td><span ng-bind="ctrl.SelectedProduct.Unit"></span></td>
 				</tr>
 				<tr>
 					<td>
 					<span class="DetailHeading">PhotoPath</span>
 					</td>
-					<td><span ng-bind="product.PhotoPath"></span></td>
+					<td><span ng-bind="ctrl.SelectedProduct.PhotoPath"></span></td>
 				</tr>
 			</tbody>
 			</table>
-			<span><a href="/vendors/get/{{vendor.ID}}">Edit</a></span>
+			<span><a href="#/products/edit/{{ctrl.SelectedProduct.ID}}">Edit</a></span>
 		</div>
 </div>

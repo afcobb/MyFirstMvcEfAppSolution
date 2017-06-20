@@ -1,0 +1,48 @@
+<div style="width:60%;margin:10px auto;">
+	<div><span id="PageTitle"><<span ng-bind="ctrl.PageTitle"></span> Detail</span></div>
+	<div>
+		<div class="form-group row">
+			<label for="product-id" class="col-md-3- col-form-label">ID</label>
+			<div class="col-md-9">
+				<input class="form-control" disabled="disabled" type="text" ng-model="ctrl.SelectedProduct.ID" id="product-id">
+			</div>
+	</div>
+
+		<div class="form-group row">
+			<label for="product-id" class="col-md-3- col-form-label">Name</label>
+			<div class="col-md-9">
+				<input class="form-control" type="text" ng-model="ctrl.SelectedProduct.Name" id="product-name">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="product-id" class="col-md-3- col-form-label">Vendor Part Number</label>
+			<div class="col-md-9">
+				<input class="form-control" type="text" ng-model="ctrl.SelectedProduct.VendorPartNumber" id="product-vendorpartnumber">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="product-id" class="col-md-3- col-form-label">Price</label>
+			<div class="col-md-9">
+				<input class="form-control" type="text" ng-model="ctrl.SelectedProduct.Price" id="product-price">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="product-id" class="col-md-3- col-form-label">Unit</label>
+			<div class="col-md-9">
+				<input class="form-control" type="text" ng-model="ctrl.SelectedProduct.unit" id="product-unit">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="product-id" class="col-md-3- col-form-label">PhotoPath</label>
+			<div class="col-md-9">
+				<input class="form-control" type="text" ng-model="ctrl.SelectedProduct.PhotoPath" id="product-photopath">
+			</div>
+		</div>
+
+		<button ng-click="ctrl.Update(ctrl.SelectedProduct)">Update</button>
+	</div>
+</div>

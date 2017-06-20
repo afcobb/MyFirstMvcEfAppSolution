@@ -15,13 +15,14 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="product in ctrl.Products">
-					<td><span ng-bind="product.ID"></span>
-					<span ng-bind="product.Name"></span></td>
+					<td><span ng-bind="product.ID"></span></td>
+					<td><span ng-bind="product.Name"></span></td>
 					<td><span ng-bind="product.VendorPartNumber"></span></td>
 					<td><span ng-bind="product.Price"></span></td>
 					<td><span ng-bind="product.Unit"></span></td>
 					<td><span ng-bind="product.PhotoPath"></span></td>
-					<td><span><a href="#/products/get/{{product.ID}}">Detail</a></span>
+					<td><span><a href="#/products/detail/{{product.ID}}">Detail</a></span>
+					<td><span><a href="#/products/edit/{{product.ID}}">Edit</a></span>
 					<td><span><a href="/products/remove/{{product.ID}}">Delete</a></span>
 					</td>
 

@@ -5,6 +5,7 @@
 			<thead>
 				<tr>
 					<td>Id</td>
+					<td>Code</td>
 					<td>Name</td>
 					<td>Address</td>
 					<td>City</td>
@@ -28,7 +29,8 @@
 					<td><span ng-bind="vendor.Phone"></span></td>
 					<td><span ng-bind="vendor.Email"></span></td>
 					<td><span ng-bind="vendor.IsRecommended"></span></td>
-					<td><span><a href="#/vendors/get/{{vendor.ID}}">Detail</a></span>
+					<td><span><a href="#/vendors/detail/{{vendor.ID}}">Detail</a></span>
+					<td><span><a href="#/vendors/edit/{{vendor.ID}}">Edit</a></span>
 					<td><span><a href="/vendors/remove/{{vendor.ID}}">Delete</a></span>
 					</td>
 

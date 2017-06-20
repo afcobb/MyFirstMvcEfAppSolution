@@ -1,12 +1,12 @@
 angular.module("PrsApp")
 	.controller("UserCtrl", UserCtrl);
 
-UserCtrl.$inject = ["$http", "$routeParams"];
+UserCtrl.$inject = ["$http", "$routeParams", "$location"];
 
-function UserCtrl($http, $routeParams) {
+function UserCtrl($http, $routeParams, $location) {
 	var self = this;
 	self.SelectedUserId = $routeParams.id;
-	self.SelectedUser = null;
+
 	self.PageTitle = "User";
 
 	self.Users = [];
@@ -35,4 +35,19 @@ function UserCtrl($http, $routeParams) {
 					console.log("Error", err);
 			}
 		)
+
+	self.Update = function(user) {
+		console.log("Here")
+		$http.post("http://localhost:21386/Users/Change", user)
+		.then(
+						function(resp) {
+				console.log("Success", resp);
+					$location.path("/users")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
 }
