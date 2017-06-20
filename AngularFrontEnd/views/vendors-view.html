@@ -5,7 +5,6 @@
 			<thead>
 				<tr>
 					<td>Id</td>
-					<td>Code</td>
 					<td>Name</td>
 					<td>Address</td>
 					<td>City</td>
@@ -18,7 +17,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="user in ctrl.Vendors">
+				<tr ng-repeat="vendor in ctrl.Vendors">
 					<td><span ng-bind="vendor.Id"></span>
 					<span ng-bind="vendor.Code"></span></td>
 					<td><span ng-bind="vendor.Name"></span></td>

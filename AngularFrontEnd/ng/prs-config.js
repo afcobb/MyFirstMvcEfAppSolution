@@ -29,6 +29,16 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controller: 'VendorCtrl',
 			controllerAs: 'ctrl'
 		})
+			.when('/products', {
+			templateUrl: 'views/products-view.html',
+			controller: 'ProductCtrl',
+			controllerAs: 'ctrl'
+		})
+			.when('/products/detail/:id', {
+			templateUrl: 'views/products-detail-view.html',
+			controller: 'ProductCtrl',
+			controllerAs: 'ctrl'
+		})
 			.when('/about', {
 			templateUrl: 'views/about-view.html'
 		})
