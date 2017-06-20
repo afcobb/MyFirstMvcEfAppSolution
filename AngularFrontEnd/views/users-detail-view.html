@@ -1,0 +1,49 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+</div>
+		<table class="table">
+			<tbody>
+			<tr>
+					<td>
+					<span class="DetailHeading">Name</span>
+					</td>
+					<td>
+					<span ng-bind="ctrl.SelectedUser.FirstName"></span>
+					<span ng-bind="ctrl.SelectedUser.LastName"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Username</span>
+					</td>
+					<td><span ng-bind="user.UserName"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Email</span>
+					</td>
+					</td><span ng-bind="user.Email"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Phone</span>
+					</td>
+					<td><span ng-bind="user.Phone"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Reviewer</span>
+					</td>
+					<td><span ng-bind="user.IsReviewer"></span></td>
+				</tr>
+				<tr>
+					<td>
+					<span class="DetailHeading">Admin</span>
+					</td>
+					<td><span ng-bind="user.IsAdmin"></span></td>
+				</tr>
+			</tbody>
+			</table>
+			<span><a href="/users/get/{{user.ID}}">Edit</a></span>
+		</div>
+</div>

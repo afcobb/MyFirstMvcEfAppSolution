@@ -1,0 +1,39 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Code</td>
+					<td>Name</td>
+					<td>Address</td>
+					<td>City</td>
+					<td>State</td>
+					<td>Zip</td>
+					<td>Phone</td>
+					<td>Email</td>
+					<td>IsRecommended</td>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in ctrl.Vendors">
+					<td><span ng-bind="vendor.Id"></span>
+					<span ng-bind="vendor.Code"></span></td>
+					<td><span ng-bind="vendor.Name"></span></td>
+					<td><span ng-bind="vendor.Address"></span></td>
+					<td><span ng-bind="vendor.City"></span></td>
+					<td><span ng-bind="vendor.State"></span></td>
+					<td><span ng-bind="vendor.Zip"></span></td>
+					<td><span ng-bind="vendor.Phone"></span></td>
+					<td><span ng-bind="vendor.Email"></span></td>
+					<td><span ng-bind="vendor.IsRecommended"></span></td>
+					<td><span><a href="#/vendors/get/{{vendor.ID}}">Detail</a></span>
+					<td><span><a href="/vendors/remove/{{vendor.ID}}">Delete</a></span>
+					</td>
+
+			</tbody>
+			</table>
+		</div>
+</div>
