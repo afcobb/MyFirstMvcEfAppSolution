@@ -24,6 +24,11 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controller: 'UserCtrl',
 			controllerAs: 'ctrl'
 		})
+			.when('/users/add/', {
+			templateUrl: 'views/users-add-view.html',
+			controller: 'UserCtrl',
+			controllerAs: 'ctrl'
+		})
 			.when('/vendors', {
 			templateUrl: 'views/vendors-view.html',
 			controller: 'VendorCtrl',
@@ -39,7 +44,7 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controller: 'VendorCtrl',
 			controllerAs: 'ctrl'
 		})
-			.when('/vendors/add/:id', {
+			.when('/vendors/add/', {
 			templateUrl: 'views/vendors-add-view.html',
 			controller: 'VendorCtrl',
 			controllerAs: 'ctrl'
@@ -56,6 +61,11 @@ function PrsConfig($routeProvider, $locationProvider) {
 		})
 			.when('/products/edit/:id', {
 			templateUrl: 'views/products-edit-view.html',
+			controller: 'ProductCtrl',
+			controllerAs: 'ctrl'
+		})
+			.when('/products/add/', {
+			templateUrl: 'views/products-add-view.html',
 			controller: 'ProductCtrl',
 			controllerAs: 'ctrl'
 		})

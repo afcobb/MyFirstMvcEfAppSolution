@@ -24,10 +24,11 @@
 					<td><span ng-bind="user.IsAdmin"></span></td>
 					<td><span><a href="#/users/detail/{{user.ID}}">Detail</a></span>
 					<td><span><a href="#/users/edit/{{user.ID}}">Edit</a></span>
-					<td><span><a href="/users/remove/{{user.ID}}">Delete</a></span>
+					<td><span><a href="#/users/remove/{{user.ID}}">Delete</a></span>
 					</td>
 
 			</tbody>
 			</table>
+			<span><a href="#/users/add/{{user.ID}}">Add</a></span>
 		</div>
 </div>

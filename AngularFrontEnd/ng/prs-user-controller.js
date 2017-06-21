@@ -6,7 +6,7 @@ UserCtrl.$inject = ["$http", "$routeParams", "$location"];
 function UserCtrl($http, $routeParams, $location) {
 	var self = this;
 	self.SelectedUserId = $routeParams.id;
-
+	self.NewUser = {};
 	self.PageTitle = "User";
 
 	self.Users = [];
@@ -37,7 +37,6 @@ function UserCtrl($http, $routeParams, $location) {
 		)
 
 	self.Update = function(user) {
-		console.log("Here")
 		$http.post("http://localhost:21386/Users/Change", user)
 		.then(
 						function(resp) {
@@ -51,7 +50,6 @@ function UserCtrl($http, $routeParams, $location) {
 		)
 	}
 		self.Add = function(user) {
-		console.log("Here")
 		$http.post("http://localhost:21386/Users/Add", user)
 		.then(
 						function(resp) {

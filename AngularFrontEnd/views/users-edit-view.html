@@ -29,6 +29,13 @@
 			</div>
 		</div>
 
+						<div class="form-group row">
+			<label for="user-user-name" class="col-md-3- col-form-label">Password</label>
+			<div class="col-md-9">
+				<input class="form-control" type="text" ng-model="ctrl.NewUser.Password" id="user-password">
+			</div>
+		</div>
+
 		<div class="form-group row">
 			<label for="user-id" class="col-md-3- col-form-label">Email</label>
 			<div class="col-md-9">
@@ -57,7 +64,7 @@
 			</div>
 		</div>
 
-		<button ng-click="ctrl.Add(ctrl.SelectedUser)">Add</button>
+		<button ng-click="ctrl.Edit(ctrl.SelectedUser)">Edit</button>
 	</div>
 </div>
 

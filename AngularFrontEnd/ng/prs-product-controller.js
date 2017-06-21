@@ -7,7 +7,7 @@ function ProductCtrl($http, $routeParams, $location) {
 	var self = this;
 	self.SelectedProductId = $routeParams.id;
 	self.PageTitle = "Product";
-
+	self.NewProduct = {};
 	self.Products = [];
 
 	$http.get("http://localhost:21386/Products/List")
@@ -40,6 +40,19 @@ function ProductCtrl($http, $routeParams, $location) {
 		$http.post("http://localhost:21386/Products/Change", product)
 		.then(
 			function(resp) {
+				console.log("Success", resp);
+					$location.path("/products")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
+	self.Add = function(product) {
+		$http.post("http://localhost:21386/Products/Add", products)
+		.then(
+						function(resp) {
 				console.log("Success", resp);
 					$location.path("/products")
 			},

@@ -7,7 +7,7 @@ function VendorCtrl($http, $routeParams, $location) {
 		var self = this;
 	self.SelectedVendorId = $routeParams.id;
 	self.PageTitle = "Vendor";
-
+	self.NewVendor = {};
 	self.Vendors = [];
 
 	$http.get("http://localhost:21386/Vendors/List")
@@ -33,6 +33,19 @@ function VendorCtrl($http, $routeParams, $location) {
 
 	self.Update = function(vendor) {
 		$http.post("http://localhost:21386/Vendors/Change", vendor)
+		.then(
+						function(resp) {
+				console.log("Success", resp);
+					$location.path("/vendors")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
+			self.Add = function(vendor) {
+		$http.post("http://localhost:21386/Vendors/Add", vendor)
 		.then(
 						function(resp) {
 				console.log("Success", resp);
