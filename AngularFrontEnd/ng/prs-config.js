@@ -34,6 +34,7 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controller: 'VendorCtrl',
 			controllerAs: 'ctrl'
 		})
+
 			.when('/vendors/detail/:id', {
 			templateUrl: 'views/vendors-detail-view.html',
 			controller: 'VendorCtrl',
@@ -76,6 +77,12 @@ function PrsConfig($routeProvider, $locationProvider) {
 		})
 			.when('/purchaserequests/detail/:id', {
 			templateUrl: 'views/purchase-requests-detail-view.html',
+			controller: 'PurchaseRequestCtrl',
+			controllerAs: 'ctrl'
+		})
+
+			.when('/purchaserequests/add/', {
+			templateUrl: 'views/purchase-requests-add-view.html',
 			controller: 'PurchaseRequestCtrl',
 			controllerAs: 'ctrl'
 		})

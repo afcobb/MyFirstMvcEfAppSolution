@@ -4,7 +4,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<td>Id</td>
+					
 					<td>Code</td>
 					<td>Name</td>
 					<td>Address</td>
@@ -14,13 +14,14 @@
 					<td>Phone</td>
 					<td>Email</td>
 					<td>IsRecommended</td>
+					<td>Action</td>
 
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="vendor in ctrl.Vendors">
-					<td><span ng-bind="vendor.Id"></span>
-					<span ng-bind="vendor.Code"></span></td>
+					
+					<td><span ng-bind="vendor.Code"></span></td>
 					<td><span ng-bind="vendor.Name"></span></td>
 					<td><span ng-bind="vendor.Address"></span></td>
 					<td><span ng-bind="vendor.City"></span></td>
@@ -30,8 +31,7 @@
 					<td><span ng-bind="vendor.Email"></span></td>
 					<td><span ng-bind="vendor.IsRecommended"></span></td>
 					<td><span><a href="#/vendors/detail/{{vendor.ID}}">Detail</a></span>
-					<td><span><a href="#/vendors/edit/{{vendor.ID}}">Edit</a></span>
-					<td><span><a href="/vendors/remove/{{vendor.ID}}">Delete</a></span>
+					<td><span><a href="#/vendors/edit/{{vendor.ID}}">Edit</a></span>	
 					</td>
 
 			</tbody>

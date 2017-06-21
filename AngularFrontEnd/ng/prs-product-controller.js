@@ -62,4 +62,17 @@ function ProductCtrl($http, $routeParams, $location) {
 			}
 		)
 	}
+				self.Remove = function(id) {
+		$http.post("http://localhost:21386/Products/Remove/" + id.toString())
+		.then(
+						function(resp) {
+				console.log("Remove Success", resp);
+					$location.path("/products")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
 }

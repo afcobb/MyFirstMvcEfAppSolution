@@ -62,4 +62,17 @@ function UserCtrl($http, $routeParams, $location) {
 			}
 		)
 	}
+			self.Remove = function(id) {
+		$http.post("http://localhost:21386/Users/Remove/" + id.toString())
+		.then(
+						function(resp) {
+				console.log("Remove Success", resp);
+					$location.path("/users")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
 }
