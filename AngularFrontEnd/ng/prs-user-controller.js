@@ -50,4 +50,18 @@ function UserCtrl($http, $routeParams, $location) {
 			}
 		)
 	}
+		self.Add = function(user) {
+		console.log("Here")
+		$http.post("http://localhost:21386/Users/Add", user)
+		.then(
+						function(resp) {
+				console.log("Success", resp);
+					$location.path("/users")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
 }
