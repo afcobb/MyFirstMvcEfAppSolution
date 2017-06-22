@@ -32,12 +32,12 @@ function PurchaseRequestCtrl($http, $routeParams, $location) {
 					console.log("Error", err);
 			}
 		)
-		self.Add = function(purchaseRequest) {
-		$http.post("http://localhost:21386/PurchaseRequests/Add", purchaseRequest)
+
+	self.GetUsers = function() {
+		$http.get("http://localhost:21386/Users/List")
 		.then(
 						function(resp) {
-				console.log("Success", resp);
-					$location.path("/purchaseRequests")
+				self.Users = resp.data;
 			},
 			// if error
 			function(err) {
@@ -45,7 +45,7 @@ function PurchaseRequestCtrl($http, $routeParams, $location) {
 			}
 		)
 	}
-				self.Remove = function(id) {
+		self.Remove = function(id) {
 		$http.post("http://localhost:21386/PurchaseRequests/Remove/" + id.toString())
 		.then(
 						function(resp) {
