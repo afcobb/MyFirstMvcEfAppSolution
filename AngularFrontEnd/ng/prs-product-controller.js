@@ -49,8 +49,23 @@ function ProductCtrl($http, $routeParams, $location) {
 			}
 		)
 	}
+
+	self.GetVendors = function() {
+		$http.get("http://localhost:21386/Vendors/List")
+		.then(
+						function(resp) {
+				self.Vendors = resp.data;
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
+	self.GetVendors();
+
 	self.Add = function(product) {
-		$http.post("http://localhost:21386/Products/Add", products)
+		$http.post("http://localhost:21386/Products/Add", product)
 		.then(
 						function(resp) {
 				console.log("Success", resp);

@@ -81,7 +81,7 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controllerAs: 'ctrl'
 		})
 
-			.when('/purchaserequests/add/', {
+			.when('/PurchaseRequests/add/', {
 			templateUrl: 'views/purchase-requests-add-view.html',
 			controller: 'PurchaseRequestCtrl',
 			controllerAs: 'ctrl'

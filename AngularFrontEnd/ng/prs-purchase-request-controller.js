@@ -7,6 +7,7 @@ function PurchaseRequestCtrl($http, $routeParams, $location) {
 		var self = this;
 	self.SelectedPurchaseRequestId = $routeParams.id;
 	self.SelectedPurchaseRequest = null;
+	self.NewPurchaseRequest = {};
 	self.PageTitle = "PurchaseRequest";
 
 	self.PurchaseRequests = [];
