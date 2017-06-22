@@ -33,6 +33,42 @@ function PurchaseRequestCtrl($http, $routeParams, $location) {
 			}
 		)
 
+self.GetPurchaseRequests = function() {
+	$http.get("http://localhost:21386/PurchaseRequests/List")
+		.then(
+			function(resp) {
+				console.log("[List] Success!", resp);
+				self.PurchaseRequests = resp.data;
+				for(var idx in self.PurchaseRequests) {
+					var pr = self.PurchaseRequests[idx];
+					pr.DateNeeded = Number(pr.DateNeeded.replace('/Date(','').replace(')/',''))
+				}
+			},
+			function(err) {
+				console.log("[List] error", err);
+			}
+			)
+}
+
+self.GetPurchaseRequests();
+
+self.GetPurchaseRequest = function(id) {
+	if(id == undefined)
+		return;
+	http:get("http://localhost:21386/PurchaseRequests/Get/"+id.toString())
+	.then(
+		function(resp) {
+			self.SelectedPurchaseRequest = resp.data;
+			self.SelectedPurchaseRequest.DateNeeded
+				= Number(self.SelectedPurchaseRequest.DateNeeded.replace('/Date(','').replace(')/',''))
+		},
+		function(err) {
+			console.log("[GET] ERROR", err);
+		}
+	)
+}
+self.GetPurchaseRequest(self.GetPurchaseRequestId);
+
 	self.GetUsers = function() {
 		$http.get("http://localhost:21386/Users/List")
 		.then(
