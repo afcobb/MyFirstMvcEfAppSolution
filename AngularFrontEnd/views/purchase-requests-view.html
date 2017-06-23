@@ -17,17 +17,17 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="purchaseRequest in ctrl.PurchaseRequests">
-					<td><span ng-bind="purchaseRequest.Id"></span>
-					<span ng-bind="purchaseRequest.Description"></span></td>
+					<td><span ng-bind="purchaseRequest.ID"></span></td>
+					<td><span ng-bind="purchaseRequest.Description"></span></td>
 					<td><span ng-bind="purchaseRequest.Justification"></span></td>
 					<td><span ng-bind="purchaseRequest.DateNeeded | date: 'MM/dd/yyyy'"></span></td>
 					<td><span ng-bind="purchaseRequest.DeliveryMode"></span></td>
 					<td><span ng-bind="purchaseRequest.DocsAttached"></span></td>
 					<td><span ng-bind="purchaseRequest.Status"></span></td>
 					<td><span ng-bind="purchaseRequest.Total"></span></td>
-					<td><span ng-bind="purchaseRequest.SubmittedDate"></span></td>
-					<td><span><a href="#/purchaseRequests/get/{{purchaseRequest.ID}}">Detail</a></span>
-					<td><span><a href="/purchaseRequests/remove/{{purchaseRequest.ID}}">Delete</a></span>
+					<td><span ng-bind="purchaseRequest.SubmittedDate | date: 'MM/dd/yyyy'"></span></td>
+					<td><span><a href="#/purchaserequests/detail/{{purchaseRequest.ID}}">Detail</a></span>
+					<td><span><a href="#/PurchaseRequests/edit/{{purchaseRequest.ID}}">Edit</a></span>
 					</td>
 
 			</tbody>

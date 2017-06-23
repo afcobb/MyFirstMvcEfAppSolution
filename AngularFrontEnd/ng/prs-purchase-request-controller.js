@@ -43,6 +43,10 @@ self.GetPurchaseRequests = function() {
 					var pr = self.PurchaseRequests[idx];
 					pr.DateNeeded = Number(pr.DateNeeded.replace('/Date(','').replace(')/',''))
 				}
+				for(var idx in self.PurchaseRequests) {
+					var pr = self.PurchaseRequests[idx];
+					pr.SubmittedDate = Number(pr.SubmittedDate.replace('/Date(','').replace(')/',''))
+				}
 			},
 			function(err) {
 				console.log("[List] error", err);
@@ -62,18 +66,39 @@ self.GetPurchaseRequest = function(id) {
 			self.SelectedPurchaseRequest.DateNeeded
 				= Number(self.SelectedPurchaseRequest.DateNeeded.replace('/Date(','').replace(')/',''))
 		},
+				function(resp) {
+			self.SelectedPurchaseRequest = resp.data;
+			self.SelectedPurchaseRequest.SubmittedDate
+				= Number(self.SelectedPurchaseRequest.SubmittedDate.replace('/Date(','').replace(')/',''))
+		},
 		function(err) {
 			console.log("[GET] ERROR", err);
 		}
 	)
 }
-self.GetPurchaseRequest(self.GetPurchaseRequestId);
+self.GetPurchaseRequest(self.GetSelectedPurchaseRequestId);
 
-	self.GetUsers = function() {
+
+self.GetUsers = function() {
 		$http.get("http://localhost:21386/Users/List")
 		.then(
 						function(resp) {
 				self.Users = resp.data;
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
+	self.GetUsers();
+
+			self.Add = function(purchaseRequest) {
+		$http.post("http://localhost:21386/PurchaseRequests/Add/", purchaseRequest)
+		.then(
+						function(resp) {
+				console.log("Add Success", resp);
+					$location.path("/purchaseRequests")
 			},
 			// if error
 			function(err) {

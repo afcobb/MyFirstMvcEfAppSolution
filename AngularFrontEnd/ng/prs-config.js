@@ -86,10 +86,20 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controller: 'PurchaseRequestCtrl',
 			controllerAs: 'ctrl'
 		})
+			.when('/PurchaseRequests/edit/:id', {
+			templateUrl: 'views/purchase-requests-edit-view.html',
+			controller: 'PurchaseRequestCtrl',
+			controllerAs: 'ctrl'
+		})
+			.when('/PurchaseRequestsLineItems/view/:prid', {
+			templateUrl: 'views/purchase-requests-line-items.html',
+			controller: 'PurchaseRequestLineItemsCtrl',
+			controllerAs: 'ctrl'
+		})
 			.when('/about', {
 			templateUrl: 'views/about-view.html'
 		})
-		.otherwise({
+		.otherwise({	
 			redirectTo: "/"
 		});
 }
