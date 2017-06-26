@@ -14,8 +14,10 @@
 					<td><span ng-bind="PurchaseRequestLineItem.Product"></span></td>
 					<td><span ng-bind="PurchaseRequestLineItem.Quantity"></span></td>
 					<td><span ng-bind="PurchaseRequestLineItem.Action"></span></td>
-
+					<td><span><a href="#/PurchaseRequestLineItems/detail/{{purchaserequestlineitem.ID}}">Detail</a></span>
+					<td><span><a href="#/PurchaseRequestLineItems/edit/{{purchaserequestlineitem.ID}}">Edit</a></span>
 			</tbody>
 			</table>
 		</div>
+				<span><a href="#/PurchaseRequestLineItems/add/{{ctrl.SelectedPurchaseRequestId}}">Add</a></span>
 </div>

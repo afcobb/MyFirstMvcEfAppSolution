@@ -91,11 +91,22 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controller: 'PurchaseRequestCtrl',
 			controllerAs: 'ctrl'
 		})
-			.when('/PurchaseRequestsLineItems/view/:prid', {
-			templateUrl: 'views/purchase-requests-line-items.html',
-			controller: 'PurchaseRequestLineItemsCtrl',
+			.when('/PurchaseRequestLineItems/view/:prid', {
+			templateUrl: 'views/purchase-request-line-items-view.html',
+			controller: 'PurchaseRequestLineItemCtrl',
 			controllerAs: 'ctrl'
 		})
+
+		.when('/PurchaseRequestLineItems/add/:prid', {
+			templateUrl: 'views/purchase-request-line-items-add-view.html',
+			controller: 'PurchaseRequestLineItemCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/PurchaseRequestLineItems/edit/:prid', {
+			templateUrl: 'views/purchase-request-line-items-edit-view.html',
+			controller: 'PurchaseRequestLineItemCtrl',
+			controllerAs: 'ctrl'
+		})				
 			.when('/about', {
 			templateUrl: 'views/about-view.html'
 		})

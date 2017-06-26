@@ -6,22 +6,22 @@ PurchaseRequestLineItemCtrl.$inject = ["$http", "$routeParams", "$location"];
 function PurchaseRequestLineItemCtrl($http, $routeParams, $location) {
 		var self = this;
 	self.SelectedPurchaseRequestLineItemId = $routeParams.id;
-	self.SelectedPurchaseRequestLineItemId = null;
+	self.SelectedPurchaseRequestId = $routeParams.prid;
 	self.PageTitle = "PurchaseRequestLineItem";
 
 	self.PurchaseRequests = [];
 
-	$http.get("http://localhost:21386/PurchaseRequestsLineItem/List")
+	$http.get("http://localhost:21386/PurchaseRequestLineItems/List")
 	.then (
 			function(resp) {
 				console.log("Success", resp);
-					self.PurchaseRequests = resp.data; 
+					self.PurchaseRequest = resp.data; 
 			},
 			function(err) {
 					console.log("Error", err);
 			}
 		)
-	$http.get("http://localhost:21386/PurchaseRequestsLineItem/Get/"+self.SelectedPurchaseRequestId)
+	$http.get("http://localhost:21386/PurchaseRequestLineItems/Get/"+self.SelectedPurchaseRequestId)
 		.then (
 			function(resp) {
 				console.log("Success", resp);
@@ -34,7 +34,7 @@ function PurchaseRequestLineItemCtrl($http, $routeParams, $location) {
 self.GetPurchaseRequest = function(id) {
 	if(id == undefined)
 		return;
-	http:get("http://localhost:21386/PurchaseRequests/Get/"+id.toString())
+	$http.get("http://localhost:21386/PurchaseRequests/Get/"+id.toString())
 	.then(
 		function(resp) {
 			self.SelectedPurchaseRequest = resp.data;
@@ -54,7 +54,21 @@ self.GetPurchaseRequest = function(id) {
 self.GetPurchaseRequest(self.GetSeletedPurchaseRequestId);
 
 self.GetPurchaseRequestLineItems = function(prId) {
-	http:get("http://localhost:21386/PurchaseRequestLineItems/List")
+	var action = (prId = undefined) ? "List" : "ListByPurchaseRequest/" + prId.toString();
+	$http.get("http://localhost:21386/PurchaseRequestLineItems/" + action)
+	.then(
+		function(resp) {
+			console.log("[LIST] Success", resp);
+			self.PurchaseRequestLineItems = resp.data;
+		},
+		function(err) {
+			console.log("[List] ERROR", err);
+		}
+		)
+}
+
+self.GetPurchaseRequestLineItems = function(prId) {
+	$http.get("http://localhost:21386/PurchaseRequestLineItems/List")
 		.then(
 			function(resp) {
 				console.log("[LIST] Success", resp);
@@ -75,5 +89,5 @@ self.GetPurchaseRequestLineItems = function(prId) {
 			}
 		)
 }
-self.GetPurchaseRequestLineItems(Self.SelectedPurchaseRequestId);
+self.GetPurchaseRequestLineItems(self.SelectedPurchaseRequestId);	
 }
