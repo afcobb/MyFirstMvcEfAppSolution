@@ -5,11 +5,11 @@ PurchaseRequestSvc.$inject = [];
 
 function PurchaseRequestSvc() {
 	var self = this;
-	self.PurchaseRequestId = function() {
+	self.GetPurchaseRequestId = function() {
 	return self.PurchaseRequestId;
 	}
 	self.SetPurchaseRequestId = function(id) {
-	self.PurchaseRequest = id;
+	self.PurchaseRequestId = id;
 	}
 };
 

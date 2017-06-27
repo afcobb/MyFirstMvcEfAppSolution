@@ -1,13 +1,13 @@
 angular.module("PrsApp")
 	.controller("PurchaseRequestLineItemCtrl", PurchaseRequestLineItemCtrl);
 
-PurchaseRequestLineItemCtrl.$inject = ["$http", "$routeParams", "$location"];
+PurchaseRequestLineItemCtrl.$inject = ["$http", "$routeParams", "$location", "PurchaseRequestSvc"];
 
 function PurchaseRequestLineItemCtrl($http, $routeParams, $location, PurchaseRequestSvc) {
 		var self = this;
 	self.SelectedPurchaseRequestLineItemId = $routeParams.id;
 	self.SelectedPurchaseRequestId = $routeParams.prid;
-	if(typeof $routeParams.prId != 'undefined') {
+	if(typeof $routeParams.prid != 'undefined') {
 		PurchaseRequestSvc.SetPurchaseRequestId(self.SelectedPurchaseRequestId);
 	}
 
@@ -113,7 +113,7 @@ self.GetProducts = function() {
 	self.GetProducts();
 
 self.Add = function(PurchaseRequestLineItems) {
-		PurchaseRequestLineItems.PurchaseRequestId = PurchaseRequestSvc.PurchaseRequestId();
+		PurchaseRequestLineItems.PurchaseRequestId = PurchaseRequestSvc.GetPurchaseRequestId();
 		$http.post("http://localhost:21386/PurchaseRequestLineItems/add/", PurchaseRequestLineItems)
 		.then(
 						function(resp) {
