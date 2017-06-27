@@ -2,16 +2,17 @@
 	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> Add</span></div>
 	<div>
 		<div class="form-group row">
-			<label for="PurchaseRequestLineItem-id" class="col-md-3 col-form-label">ID</label>
+			<label for="purchaserequestlineitem-id" class="col-md-3 col-form-label">ID</label>
 			<div class="col-md-9">
-				<input class="form-control" disabled="disabled" type="text" ng-model="ctrl.PurchaseRequest.ID" id="PurchaseRequestLineItem-id">
+				<input class="form-control" disabled="disabled" type="text" ng-model="ctrl.PurchaseRequest.ID" id="purchaserequestlineitem-id">
 			</div>
 	</div>
 
-		<div class="form-group row">
-			<label for="PurchaseRequestLineItem-product" class="col-md-3 col-form-label">Product</label>
+	<div class="form-group row">
+		<label for="purchaserequestlineitem-product" class="col-md-3 col-form-label">Product</label>
 			<div class="col-md-9">
-				<input class="form-control" type="text" ng-model="ctrl.PurchaseRequest.Product" id="PurchaseRequestLineItem-product">
+				<select class="form-control" type="text" ng-model="ctrl.PurchaseRequestLineItem.ProductID" id="purchaserequestlineitem-product">
+				<option ng-repeat="product in ctrl.Products" value="{{product.Name}}">{{product.Name}}</option></select>
 			</div>
 		</div>
 
@@ -22,6 +23,6 @@
 			</div>
 		</div>
 
-		<button ng-click="ctrl.Add(ctrl.PurchaseRequestLineItem)">Add</button>
+		<button ng-click="ctrl.Add(SelectedPurchaseRequestLineItemId)">Add</button>
 	</div>
 </div>

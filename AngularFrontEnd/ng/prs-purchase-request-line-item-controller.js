@@ -3,10 +3,14 @@ angular.module("PrsApp")
 
 PurchaseRequestLineItemCtrl.$inject = ["$http", "$routeParams", "$location"];
 
-function PurchaseRequestLineItemCtrl($http, $routeParams, $location) {
+function PurchaseRequestLineItemCtrl($http, $routeParams, $location, PurchaseRequestSvc) {
 		var self = this;
 	self.SelectedPurchaseRequestLineItemId = $routeParams.id;
 	self.SelectedPurchaseRequestId = $routeParams.prid;
+	if(typeof $routeParams.prId != 'undefined') {
+		PurchaseRequestSvc.SetPurchaseRequestId(self.SelectedPurchaseRequestId);
+	}
+
 	self.PageTitle = "PurchaseRequestLineItem";
 
 	self.PurchaseRequests = [];
@@ -51,10 +55,11 @@ self.GetPurchaseRequest = function(id) {
 		}
 	)
 }
-self.GetPurchaseRequest(self.GetSeletedPurchaseRequestId);
+self.GetPurchaseRequest(self.SelectedPurchaseRequestId);
+
 
 self.GetPurchaseRequestLineItems = function(prId) {
-	var action = (prId = undefined) ? "List" : "ListByPurchaseRequest/" + prId.toString();
+	var action = (typeof prId == 'undefined') ? "List" : "ListByPurchaseRequest/" + prId.toString();
 	$http.get("http://localhost:21386/PurchaseRequestLineItems/" + action)
 	.then(
 		function(resp) {
@@ -66,6 +71,7 @@ self.GetPurchaseRequestLineItems = function(prId) {
 		}
 		)
 }
+self.GetPurchaseRequestLineItems(self.SelectedPurchaseRequestId);
 
 self.GetPurchaseRequestLineItems = function(prId) {
 	$http.get("http://localhost:21386/PurchaseRequestLineItems/List")
@@ -90,4 +96,34 @@ self.GetPurchaseRequestLineItems = function(prId) {
 		)
 }
 self.GetPurchaseRequestLineItems(self.SelectedPurchaseRequestId);	
+
+
+self.GetProducts = function() {
+	$http.get("http://localhost:21386/Products/List")
+		.then(
+						function(resp) {
+				self.Products = resp.data;
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
+	self.GetProducts();
+
+self.Add = function(PurchaseRequestLineItems) {
+		PurchaseRequestLineItems.PurchaseRequestId = PurchaseRequestSvc.PurchaseRequestId();
+		$http.post("http://localhost:21386/PurchaseRequestLineItems/add/", PurchaseRequestLineItems)
+		.then(
+						function(resp) {
+				console.log("Add Success", resp);
+					$location.path("/PurchaseRequestLineItems")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
 }

@@ -1,10 +1,22 @@
 angular.module("PrsApp")
 	.controller("UserCtrl", UserCtrl);
 
-UserCtrl.$inject = ["$http", "$routeParams", "$location"];
+UserCtrl.$inject = ["$http", "$routeParams", "$location", "UserSvc"];
 
-function UserCtrl($http, $routeParams, $location) {
+function UserCtrl($http, $routeParams, $location, UserSvc) {
 	var self = this;
+	UserSvc.GetUsers()
+		.then(
+			function (resp) {
+				console.log("SVC Success", resp);
+					self.Users = resp.data; //sets self.Users equal to the array of user objects
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		);
+
 	self.SelectedUserId = $routeParams.id;
 	self.NewUser = {};
 	self.PageTitle = "User";
@@ -23,8 +35,21 @@ function UserCtrl($http, $routeParams, $location) {
 					console.log("Error", err);
 			}
 		)
-	$http.get("http://localhost:21386/Users/Get/"+self.SelectedUserId)
-		.then (
+	// $http.get("http://localhost:21386/Users/Get/"+self.SelectedUserId)
+	// 	.then (
+	// 	/*if successful*/
+	// 		function(resp) {
+	// 			console.log("Success", resp);
+	// 				self.SelectedUser = resp.data;
+	// 		},
+	// 		// if error
+	// 		function(err) {
+	// 				console.log("Error", err);
+	// 		}
+	// 	)
+
+		UserSvc.GetUser(self.SelectedUserId)
+			.then (
 		/*if successful*/
 			function(resp) {
 				console.log("Success", resp);
