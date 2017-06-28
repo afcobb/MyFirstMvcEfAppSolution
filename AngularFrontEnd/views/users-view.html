@@ -31,10 +31,10 @@
 					<td><span ng-bind="user.IsReviewer"></span></td>
 					<td><span ng-bind="user.IsAdmin"></span></td>
 					<td><span><a href="#/users/detail/{{user.ID}}">Detail</a></span>
-					<td><span><a href="#/users/edit/{{user.ID}}">Edit</a></span>
+					<td><span ng-if= "ctrl.AuthenticatedUser.IsAdmin"><a href="#/users/edit/{{user.ID}}">Edit</a></span>
 					</td>
 			</tbody>
 			</table>
-			<span><a href="#/users/add/{{user.ID}}">Add</a></span>
+			<span ng-if= "ctrl.AuthenticatedUser.IsAdmin"><a href="#/users/add/{{user.ID}}">Add</a></span>
 		</div>
 </div>

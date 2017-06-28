@@ -5,6 +5,7 @@ UserCtrl.$inject = ["$http", "$routeParams", "$location", "UserSvc", "SystemSvc"
 
 function UserCtrl($http, $routeParams, $location, UserSvc, SystemSvc) {
 	var self = this;
+	self.AuthenticatedUser = SystemSvc.AuthenticatedUser;
 	UserSvc.GetUsers()
 		.then(
 			function (resp) {
@@ -109,6 +110,7 @@ function UserCtrl($http, $routeParams, $location, UserSvc, SystemSvc) {
     		// this is where user is logged in successfully
     		self.Authenticated = true 
     		self.AuthenticatedUser = SystemSvc.AuthenticatedUser = user
+    		$location.path("/")
     	}
 
     };
