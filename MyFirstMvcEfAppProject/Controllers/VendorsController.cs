@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MyFirstMvcEfAppProject.Models;
+using Api = System.Web.Http;
+
 
 namespace MyFirstMvcEfAppProject.Controllers
 {
@@ -15,6 +17,47 @@ namespace MyFirstMvcEfAppProject.Controllers
         private MyFirstMvcEfAppProjectContext db = new MyFirstMvcEfAppProjectContext();
 
         // GET: Vendors
+        public ActionResult List() {
+            return Json(db.Vendors.ToList(), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Get(int? id) {
+            return Json(db.Vendors.Find(id), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Remove(int? id) {
+            if (id == null) {
+                var rc = new Msg { Result = "Failed", Message = "No Id supplied" };
+                return Json(rc, JsonRequestBehavior.AllowGet);
+            }
+            Vendor vendor = db.Vendors.Find(id);
+            if (vendor == null) {
+                return Json(new Msg { Result = "Failed", Message = $"User not found for id {id}" }, JsonRequestBehavior.AllowGet);
+            }
+            db.Vendors.Remove(vendor);
+            db.SaveChanges();
+            return Json(new Msg { Result = "OK", Message = "Successfully deleted" }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Add([Api.FromBody] Vendor aVendor) {
+            if (aVendor.Name == null) return Json(new Msg { Result = "Failure", Message = "aUser is empty" }, JsonRequestBehavior.AllowGet);
+            db.Vendors.Add(aVendor);
+            db.SaveChanges();
+            return Json(new Msg { Result = "OK", Message = "Succesfully added" }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Change([Api.FromBody]Vendor aVendor) {
+            if (aVendor.ID == 0) return Json(new Msg { Result = "Failure", Message = "aUser is empty" }, JsonRequestBehavior.AllowGet);
+            Vendor vendor = db.Vendors.Find(aVendor.ID);
+            vendor.ID = aVendor.ID;
+            vendor.Code = aVendor.Code;
+            vendor.Name = aVendor.Name;
+            vendor.Address = aVendor.Address;
+            vendor.City = aVendor.City;
+            vendor.State = aVendor.State;
+            vendor.Zip = aVendor.Zip;
+            vendor.Phone = aVendor.Phone;
+            vendor.Email = aVendor.Email;
+            vendor.IsRecommended = aVendor.IsRecommended;
+            db.SaveChanges();
+            return Json(new Msg { Result = "OK", Message = "Successfully added" }, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Index()
         {
             return View(db.Vendors.ToList());

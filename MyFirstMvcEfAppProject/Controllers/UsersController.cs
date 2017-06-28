@@ -40,12 +40,14 @@ namespace MyFirstMvcEfAppProject.Controllers
             db.SaveChanges();
             return Json(new Msg { Result = "OK", Message = "Successfully deleted" }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Add([Api.FromBody] User user) {
-            db.Users.Add(user);
+        public ActionResult Add([Api.FromBody] User aUser) {
+            if (aUser.UserName == null) return Json(new Msg { Result = "Failure", Message = "aUser is empty" }, JsonRequestBehavior.AllowGet);
+            db.Users.Add(aUser);
             db.SaveChanges();
             return Json(new Msg { Result = "OK", Message = "Succesfully added"  }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Change([Api.FromBody]User aUser) {
+            if (aUser.ID == 0) return Json(new Msg { Result = "Failure", Message = "aUser is empty" }, JsonRequestBehavior.AllowGet);
             User user = db.Users.Find(aUser.ID);
             user.FirstName = aUser.FirstName;
             user.LastName = aUser.LastName;

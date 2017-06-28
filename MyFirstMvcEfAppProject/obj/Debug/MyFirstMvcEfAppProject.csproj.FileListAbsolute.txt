@@ -94,3 +94,5 @@ C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAp
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.updatestoproduccontrol.resources
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.jsonupdates.resources
 C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.removeaddchange.resources
+C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.updatestovendorsandusers.resources
+C:\repos\MyFirstMvcEfAppSolution\MyFirstMvcEfAppProject\obj\Debug\MyFirstMvcEfAppProject.Migrations.updatestolineitems.resources

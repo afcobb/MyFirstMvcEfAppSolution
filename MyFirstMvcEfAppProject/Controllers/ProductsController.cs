@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MyFirstMvcEfAppProject.Models;
+using Api = System.Web.Http;
 
 namespace MyFirstMvcEfAppProject.Controllers
 {
@@ -14,6 +15,43 @@ namespace MyFirstMvcEfAppProject.Controllers
     {
         private MyFirstMvcEfAppProjectContext db = new MyFirstMvcEfAppProjectContext();
 
+        public ActionResult List() {
+            return Json(db.Products.ToList(), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Get(int? id) {
+            return Json(db.Products.Find(id), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Remove(int? id) {
+            if (id == null) {
+                var rc = new Msg { Result = "Failed ", Message = "No Id supplied" };
+                return Json(rc, JsonRequestBehavior.AllowGet);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null) {
+                return Json(new Msg { Result = "Failed", Message = $"Product not found for id {id}" }, JsonRequestBehavior.AllowGet);
+            }
+            db.Products.Remove(product);
+            db.SaveChanges();
+            return Json(new Msg { Result = "OK", Message = "Successfully deleted" }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Add([Api.FromBody] Product aProduct) {
+            if (aProduct.Name == null) return Json(new Msg { Result = "Failure", Message = "aUser is empty" }, JsonRequestBehavior.AllowGet);
+            db.Products.Add(aProduct);
+            db.SaveChanges();
+            return Json(new Msg { Result = "OK", Message = "Succesfully added" }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Change([Api.FromBody]Product aProduct) {
+            if (aProduct.ID == 0) return Json(new Msg { Result = "Failure", Message = "aUser is empty" }, JsonRequestBehavior.AllowGet);
+            Product product = db.Products.Find(aProduct.ID);
+            product.ID = aProduct.ID;
+            product.Name = aProduct.Name;
+            product.VendorPartNumber = aProduct.VendorPartNumber;
+            product.Price = aProduct.Price;
+            product.Unit = aProduct.Unit;
+            product.PhotoPath = aProduct.PhotoPath;
+            db.SaveChanges();
+            return Json(new Msg { Result = "OK", Message = "Successfully added" }, JsonRequestBehavior.AllowGet);
+        }
         // GET: Products
         public ActionResult Index()
         {

@@ -265,6 +265,14 @@
     <Compile Include="Migrations\201706161609174_remove-add-change.Designer.cs">
       <DependentUpon>201706161609174_remove-add-change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706201831244_updates-to-vendorsandusers.cs" />
+    <Compile Include="Migrations\201706201831244_updates-to-vendorsandusers.Designer.cs">
+      <DependentUpon>201706201831244_updates-to-vendorsandusers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706261345235_updates-to-lineitems.cs" />
+    <Compile Include="Migrations\201706261345235_updates-to-lineitems.Designer.cs">
+      <DependentUpon>201706261345235_updates-to-lineitems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\lineItem.cs" />
     <Compile Include="Models\MyFirstMvcEfAppProjectContext.cs" />
@@ -431,6 +439,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706161609174_remove-add-change.resx">
       <DependentUpon>201706161609174_remove-add-change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706201831244_updates-to-vendorsandusers.resx">
+      <DependentUpon>201706201831244_updates-to-vendorsandusers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706261345235_updates-to-lineitems.resx">
+      <DependentUpon>201706261345235_updates-to-lineitems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
