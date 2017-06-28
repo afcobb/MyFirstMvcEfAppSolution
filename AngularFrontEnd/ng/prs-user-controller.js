@@ -1,9 +1,9 @@
 angular.module("PrsApp")
 	.controller("UserCtrl", UserCtrl);
 
-UserCtrl.$inject = ["$http", "$routeParams", "$location", "UserSvc"];
+UserCtrl.$inject = ["$http", "$routeParams", "$location", "UserSvc", "$scope", "authentication"];
 
-function UserCtrl($http, $routeParams, $location, UserSvc) {
+function UserCtrl($http, $routeParams, $location, UserSvc, $scope, authentication) {
 	var self = this;
 	UserSvc.GetUsers()
 		.then(
@@ -100,4 +100,24 @@ function UserCtrl($http, $routeParams, $location, UserSvc) {
 			}
 		)
 	}
+
+
+app.controller('UserCtrl', function($scope, authentication) {
+  $scope.templates =
+  [
+    { url: 'login.html' },
+    { url: 'home.html' }
+  ];
+    $scope.template = $scope.templates[0];
+  self.Login = function (username, password) {
+    if ( username === 'admin' && password === '1234') {
+        authentication.isAuthenticated = true;
+        $scope.template = $scope.templates[1];
+        $scope.user = username;
+    } else {
+        $scope.loginError = "Invalid username/password combination";
+    };
+  };
+
+};
 }
