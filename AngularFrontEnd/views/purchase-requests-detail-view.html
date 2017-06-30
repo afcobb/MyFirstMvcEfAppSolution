@@ -27,7 +27,7 @@
 					<td>
 					<span class="DetailHeading">Date Needed</span>
 					</td>
-					<td><span ng-bind="ctrl.SelectedPurchaseRequest.DateNeeded"></span></td>
+					<td><span ng-bind="ctrl.SelectedPurchaseRequest.DateNeeded | date: 'MM/dd/yyyy'"></span></td>
 				</tr>
 				<tr>
 					<td>
@@ -57,10 +57,11 @@
 					<td>
 					<span class="DetailHeading">Submitted Date</span>
 					</td>
-					<td><span ng-bind="ctrl.SelectedPurchaseRequest.SubmittedDate"></span></td>
+					<td><span ng-bind="ctrl.SelectedPurchaseRequest.SubmittedDate | date: 'MM/dd/yyyy'"></span></td>
 				</tr>
 			</tbody>
 			</table>
 			<button ng-click="ctrl.Remove(ctrl.SelectedPurchaseRequest.ID)">Delete</button>
+			<span ng-if="ctrl.SelectedPurchaseRequest.Status == 'new'"><button ng-click="ctrl.Review(ctrl.SelectedPurchaseRequest.ID)">Review</button></span>
 		</div>
 </div>

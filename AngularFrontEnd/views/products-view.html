@@ -22,11 +22,11 @@
 					<td><span ng-bind="product.Unit"></span></td>
 					<td><span ng-bind="product.PhotoPath"></span></td>
 					<td><span><a href="#/products/detail/{{product.ID}}">Detail</a></span>
-					<td><span><a href="#/products/edit/{{product.ID}}">Edit</a></span>
+					<td><span ng-if= "ctrl.AuthenticatedUser.IsAdmin"><a href="#/products/edit/{{product.ID}}">Edit</a></span>
 					</td>
 
 			</tbody>
 			</table>
-			<span><a href="#/products/add/{{product.ID}}">Add</a></span>
+			<span ng-if= "ctrl.AuthenticatedUser.IsAdmin"><a href="#/products/add/{{product.ID}}">Add</a></span>
 		</div>
 </div>

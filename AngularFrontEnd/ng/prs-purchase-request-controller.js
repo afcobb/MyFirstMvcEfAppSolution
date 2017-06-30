@@ -9,7 +9,6 @@ function PurchaseRequestCtrl($http, $routeParams, $location) {
 	self.SelectedPurchaseRequest = null;
 	self.NewPurchaseRequest = {};
 	self.PageTitle = "PurchaseRequest";
-
 	self.PurchaseRequests = [];
 
 	$http.get("http://localhost:21386/PurchaseRequests/List")
@@ -63,13 +62,8 @@ self.GetPurchaseRequest = function(id) {
 	.then(
 		function(resp) {
 			self.SelectedPurchaseRequest = resp.data;
-			self.SelectedPurchaseRequest.DateNeeded
-				= Number(self.SelectedPurchaseRequest.DateNeeded.replace('/Date(','').replace(')/',''))
-		},
-				function(resp) {
-			self.SelectedPurchaseRequest = resp.data;
-			self.SelectedPurchaseRequest.SubmittedDate
-				= Number(self.SelectedPurchaseRequest.SubmittedDate.replace('/Date(','').replace(')/',''))
+			self.SelectedPurchaseRequest.DateNeeded = Number(self.SelectedPurchaseRequest.DateNeeded.replace('/Date(','').replace(')/',''))
+			self.SelectedPurchaseRequest.SubmittedDate = Number(self.SelectedPurchaseRequest.SubmittedDate.replace('/Date(','').replace(')/',''))
 		},
 		function(err) {
 			console.log("[GET] ERROR", err);
@@ -118,5 +112,23 @@ self.GetUsers = function() {
 					console.log("Error", err);
 			}
 		)
+	}
+
+		self.Update = function(PurchaseRequest) {
+		$http.post("http://localhost:21386/PurchaseRequests/Change/", PurchaseRequest)
+		.then(
+						function(resp) {
+				console.log("Success", resp);
+					$location.path("/PurchaseRequests")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
+	self.Review = function() {
+		self.SelectedPurchaseRequest.Status = "Review";
+		self.Update(self.SelectedPurchaseRequest);
 	}
 }
