@@ -115,6 +115,17 @@ function PrsConfig($routeProvider, $locationProvider) {
 			.when('/about', {
 			templateUrl: 'views/about-view.html'
 		})
+			.when('/review', {
+			templateUrl: 'views/purchase-request-review-view.html',
+			controller: 'PurchaseRequestCtrl',
+			controllerAs: 'ctrl'
+		})
+			.when('/review/detail/:id', {
+				templateUrl: 'views/purchase-request-line-items-review-view',
+				controller: 'PurchaseRequestCtrl',
+				controllerAs: 'ctrl'
+		})
+
 		.otherwise({	
 			redirectTo: "/"
 		});

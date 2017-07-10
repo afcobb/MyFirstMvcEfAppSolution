@@ -1,0 +1,22 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Description</td>
+					<td>Justification</td>
+					<td>Total</td>	
+				</tr>		
+			</thead>
+		<tbody>
+					<tr ng-repeat="purchaseRequest in ctrl.PurchaseRequestsToReview">
+					<td><span ng-bind="purchaseRequest.ID"></span></td>
+					<td><span ng-bind="purchaseRequest.Description"></span></td>
+					<td><span ng-bind="purchaseRequest.Justification"></span></td>
+					<td><span ng-bind="purchaseRequest.Total"></span></td>
+					</td>
+			</tbody>
+			</table>
+	

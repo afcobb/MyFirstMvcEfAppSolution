@@ -1,15 +1,27 @@
 angular.module("PrsApp")
 	.controller("PurchaseRequestCtrl", PurchaseRequestCtrl);
 
-PurchaseRequestCtrl.$inject = ["$http", "$routeParams", "$location"];
+PurchaseRequestCtrl.$inject = ["$http", "$routeParams", "$location", "PurchaseRequestSvc"];
 
-function PurchaseRequestCtrl($http, $routeParams, $location) {
+function PurchaseRequestCtrl($http, $routeParams, $location, $PurchaseRequestSvc) {
 		var self = this;
 	self.SelectedPurchaseRequestId = $routeParams.id;
 	self.SelectedPurchaseRequest = null;
 	self.NewPurchaseRequest = {};
 	self.PageTitle = "PurchaseRequest";
 	self.PurchaseRequests = [];
+	self.PurchaseRequestStatus = {
+		New : "New",
+		Review : "Review",
+		Approved : "Approved",
+		Rejected : "Rejected"
+	};
+	self.PurchaseRequestStatuses = [
+		self.PurchaseRequestStatus.New,
+		self.PurchaseRequestStatus.Review,
+		self.PurchaseRequestStatus.Approved,
+		self.PurchaseRequestStatus.Rejected
+	];
 
 	$http.get("http://localhost:21386/PurchaseRequests/List")
 	.then (
@@ -131,4 +143,24 @@ self.GetUsers = function() {
 		self.SelectedPurchaseRequest.Status = "Review";
 		self.Update(self.SelectedPurchaseRequest);
 	}
+
+	self.GetPurchaseRequestsToReview = function() {
+		$http.get("http://localhost:21386/PurchaseRequests/List")
+			.then(
+				function(resp) {
+					var purchaseRequests = resp.data;
+					self.PurchaseRequestsToReview = [];
+					for(var idx in purchaseRequests) {
+						purchaseRequest = purchaseRequests[idx];
+						if(purchaseRequest.Status === self.PurchaseRequestStatus.Review) {
+							self.PurchaseRequestsToReview.push(purchaseRequest);
+						}
+					}
+				},
+				function(err) {
+					console.log("GetPurchaseRequestsToReview", err);
+				}
+			)
+	};
+	self.GetPurchaseRequestsToReview();
 }
