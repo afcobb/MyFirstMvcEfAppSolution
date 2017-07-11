@@ -120,9 +120,9 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controller: 'PurchaseRequestCtrl',
 			controllerAs: 'ctrl'
 		})
-			.when('/review/detail/:id', {
+			.when('/review/detail/:prid', {
 				templateUrl: 'views/purchase-request-line-items-review-view',
-				controller: 'PurchaseRequestCtrl',
+				controller: 'PurchaseRequestLineItemCtrl',
 				controllerAs: 'ctrl'
 		})
 
