@@ -31,7 +31,8 @@
 					<td><span ng-bind="vendor.Email"></span></td>
 					<td><span ng-bind="vendor.IsRecommended"></span></td>
 					<td><span><a href="#/vendors/detail/{{vendor.ID}}">Detail</a></span>
-					<td><span ng-if= "ctrl.AuthenticatedUser.IsAdmin"><a href="#/vendors/edit/{{vendor.ID}}">Edit</a></span>	
+					<td><span ng-if= "ctrl.AuthenticatedUser.IsAdmin"><a href="#/vendors/edit/{{vendor.ID}}">Edit</a></span>
+					<td><span><a href="#/vendors/purchase-order/{{vendor.ID}}">Purchase Order</a></span>	
 					</td>
 
 			</tbody>
