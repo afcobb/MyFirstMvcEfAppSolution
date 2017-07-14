@@ -29,6 +29,11 @@ function PrsConfig($routeProvider, $locationProvider) {
 			controller: 'UserCtrl',
 			controllerAs: 'ctrl'
 		})
+			.when('/users/login/', {
+			templateUrl: 'views/users-login-view.html',
+			controller: 'UserCtrl',
+			controllerAs: 'ctrl'
+		})
 			.when('/vendors', {
 			templateUrl: 'views/vendors-view.html',
 			controller: 'VendorCtrl',
@@ -43,6 +48,11 @@ function PrsConfig($routeProvider, $locationProvider) {
 			.when('/vendors/edit/:id', {
 			templateUrl: 'views/vendors-edit-view.html',
 			controller: 'VendorCtrl',
+			controllerAs: 'ctrl'
+		})
+			.when('/vendors/purchase-order/:id', {
+			templateUrl: 'views/purchase-order-view.html',
+			controller: 'PurchaseOrderCtrl',
 			controllerAs: 'ctrl'
 		})
 			.when('/vendors/add/', {
@@ -110,6 +120,17 @@ function PrsConfig($routeProvider, $locationProvider) {
 			.when('/about', {
 			templateUrl: 'views/about-view.html'
 		})
+			.when('/review', {
+			templateUrl: 'views/purchase-request-review-view.html',
+			controller: 'PurchaseRequestCtrl',
+			controllerAs: 'ctrl'
+		})
+			.when('/review/detail/:prid', {
+				templateUrl: 'views/purchase-request-line-items-review-view',
+				controller: 'PurchaseRequestLineItemCtrl',
+				controllerAs: 'ctrl'
+		})
+
 		.otherwise({	
 			redirectTo: "/"
 		});

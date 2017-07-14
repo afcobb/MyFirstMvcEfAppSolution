@@ -1,10 +1,11 @@
 angular.module("PrsApp")
 	.controller("UserCtrl", UserCtrl);
 
-UserCtrl.$inject = ["$http", "$routeParams", "$location", "UserSvc"];
+UserCtrl.$inject = ["$http", "$routeParams", "$location", "UserSvc", "SystemSvc"];
 
-function UserCtrl($http, $routeParams, $location, UserSvc) {
+function UserCtrl($http, $routeParams, $location, UserSvc, SystemSvc) {
 	var self = this;
+	self.AuthenticatedUser = SystemSvc.AuthenticatedUser;
 	UserSvc.GetUsers()
 		.then(
 			function (resp) {
@@ -100,4 +101,18 @@ function UserCtrl($http, $routeParams, $location, UserSvc) {
 			}
 		)
 	}
-}
+
+  self.Login = function (username, password) {
+    self.Authenticated = false;
+    for (var idx in self.Users) {
+    	var user = self.Users[idx];
+    	if (user.UserName == username && user.Password == password) {
+    		// this is where user is logged in successfully
+    		self.Authenticated = true 
+    		self.AuthenticatedUser = SystemSvc.AuthenticatedUser = user
+    		$location.path("/")
+    	}
+
+    };
+  };
+ }

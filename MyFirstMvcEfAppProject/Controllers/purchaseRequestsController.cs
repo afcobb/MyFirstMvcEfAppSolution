@@ -17,7 +17,7 @@ namespace MyFirstMvcEfAppProject.Controllers
         private MyFirstMvcEfAppProjectContext db = new MyFirstMvcEfAppProjectContext();
 
         public ActionResult List() {
-            return Json(db.purchaseRequests.ToList(), JsonRequestBehavior.AllowGet);
+            return new JsonNetResult { Data = db.purchaseRequests.ToList() };
         }
         public ActionResult ListByPurchaseRequest(int? id) {
             if (id == null)
@@ -27,7 +27,7 @@ namespace MyFirstMvcEfAppProject.Controllers
         }
 
         public ActionResult Get(int? id) {
-            return Json(db.purchaseRequests.Find(id), JsonRequestBehavior.AllowGet);
+            return new JsonNetResult { Data = db.purchaseRequests.Find(id) };
         }
         public ActionResult Remove(int? id) {
             if (id == null) {
@@ -49,6 +49,8 @@ namespace MyFirstMvcEfAppProject.Controllers
             return Json(new Msg { Result = "OK", Message = "Succesfully added" }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Change([Api.FromBody]purchaseRequest apurchaseRequest) {
+            if (apurchaseRequest.ID == 0)
+                return new EmptyResult();
             purchaseRequest purchaseRequest = db.purchaseRequests.Find(apurchaseRequest.ID);
             purchaseRequest.ID = apurchaseRequest.ID;
             purchaseRequest.Description = apurchaseRequest.Description;

@@ -1,10 +1,11 @@
 angular.module("PrsApp")
 	.controller("VendorCtrl", VendorCtrl);
 
-VendorCtrl.$inject = ["$http", "$routeParams", "$location"];
+VendorCtrl.$inject = ["$http", "$routeParams", "$location", "SystemSvc"];
 
-function VendorCtrl($http, $routeParams, $location) {
+function VendorCtrl($http, $routeParams, $location, SystemSvc) {
 		var self = this;
+		self.AuthenticatedUser = SystemSvc.AuthenticatedUser;
 	self.SelectedVendorId = $routeParams.id;
 	self.PageTitle = "Vendor";
 	self.NewVendor = {};

@@ -44,6 +44,6 @@
 				</tr>
 			</tbody>
 			</table>
-			<button ng-click="ctrl.Remove(ctrl.SelectedUser.ID)">Delete</button>
+			<span ng-if= "ctrl.AuthenticatedUser.IsAdmin"><button ng-click="ctrl.Remove(ctrl.SelectedUser.ID)">Delete</button></span>
 		</div>
 </div>

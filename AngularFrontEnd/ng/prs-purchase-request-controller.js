@@ -1,16 +1,27 @@
 angular.module("PrsApp")
 	.controller("PurchaseRequestCtrl", PurchaseRequestCtrl);
 
-PurchaseRequestCtrl.$inject = ["$http", "$routeParams", "$location"];
+PurchaseRequestCtrl.$inject = ["$http", "$routeParams", "$location", "PurchaseRequestSvc"];
 
-function PurchaseRequestCtrl($http, $routeParams, $location) {
+function PurchaseRequestCtrl($http, $routeParams, $location, $PurchaseRequestSvc) {
 		var self = this;
 	self.SelectedPurchaseRequestId = $routeParams.id;
 	self.SelectedPurchaseRequest = null;
 	self.NewPurchaseRequest = {};
 	self.PageTitle = "PurchaseRequest";
-
 	self.PurchaseRequests = [];
+	self.PurchaseRequestStatus = {
+		New : "New",
+		Review : "Review",
+		Approved : "Approved",
+		Rejected : "Rejected"
+	};
+	self.PurchaseRequestStatuses = [
+		self.PurchaseRequestStatus.New,
+		self.PurchaseRequestStatus.Review,
+		self.PurchaseRequestStatus.Approved,
+		self.PurchaseRequestStatus.Rejected
+	];
 
 	$http.get("http://localhost:21386/PurchaseRequests/List")
 	.then (
@@ -63,13 +74,8 @@ self.GetPurchaseRequest = function(id) {
 	.then(
 		function(resp) {
 			self.SelectedPurchaseRequest = resp.data;
-			self.SelectedPurchaseRequest.DateNeeded
-				= Number(self.SelectedPurchaseRequest.DateNeeded.replace('/Date(','').replace(')/',''))
-		},
-				function(resp) {
-			self.SelectedPurchaseRequest = resp.data;
-			self.SelectedPurchaseRequest.SubmittedDate
-				= Number(self.SelectedPurchaseRequest.SubmittedDate.replace('/Date(','').replace(')/',''))
+			self.SelectedPurchaseRequest.DateNeeded = Number(self.SelectedPurchaseRequest.DateNeeded.replace('/Date(','').replace(')/',''))
+			self.SelectedPurchaseRequest.SubmittedDate = Number(self.SelectedPurchaseRequest.SubmittedDate.replace('/Date(','').replace(')/',''))
 		},
 		function(err) {
 			console.log("[GET] ERROR", err);
@@ -119,4 +125,42 @@ self.GetUsers = function() {
 			}
 		)
 	}
+
+		self.Update = function(PurchaseRequest) {
+		$http.post("http://localhost:21386/PurchaseRequests/Change/", PurchaseRequest)
+		.then(
+						function(resp) {
+				console.log("Success", resp);
+					$location.path("/PurchaseRequests")
+			},
+			// if error
+			function(err) {
+					console.log("Error", err);
+			}
+		)
+	}
+	self.Review = function() {
+		self.SelectedPurchaseRequest.Status = "Review";
+		self.Update(self.SelectedPurchaseRequest);
+	}
+
+	self.GetPurchaseRequestsToReview = function() {
+		$http.get("http://localhost:21386/PurchaseRequests/List")
+			.then(
+				function(resp) {
+					var purchaseRequests = resp.data;
+					self.PurchaseRequestsToReview = [];
+					for(var idx in purchaseRequests) {
+						purchaseRequest = purchaseRequests[idx];
+						if(purchaseRequest.Status === self.PurchaseRequestStatus.Review) {
+							self.PurchaseRequestsToReview.push(purchaseRequest);
+						}
+					}
+				},
+				function(err) {
+					console.log("GetPurchaseRequestsToReview", err);
+				}
+			)
+	};
+	self.GetPurchaseRequestsToReview();
 }

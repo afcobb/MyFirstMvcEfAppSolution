@@ -193,6 +193,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="JsonNetResult.cs" />
     <Compile Include="Migrations\201706141458152_Initial-create-db.cs" />
     <Compile Include="Migrations\201706141458152_Initial-create-db.Designer.cs">
       <DependentUpon>201706141458152_Initial-create-db.cs</DependentUpon>

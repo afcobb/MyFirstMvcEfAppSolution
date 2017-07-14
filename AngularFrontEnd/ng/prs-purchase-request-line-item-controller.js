@@ -126,5 +126,37 @@ self.Add = function(PurchaseRequestLineItems) {
 			}
 		)
 	}
+	self.Approve = function(PurchaseRequestId) {
+		SetPurchaseRequestStatus(PurchaseRequestId, "Approved")
+	}
+	self.Reject = function(PurchaseRequestId) {
+		SetPurchaseRequestStatus(PurchaseRequestId, "Rejected")
+	}
+	var SetPurchaseRequestStatus = function(PurchaseRequestId, status) {
+		var PurchaseRequestToApprove = void 0;
+		PurchaseRequestSvc.Get(PurchaseRequestId)
+			.then(
+				function(resp) {
+					PurchaseRequestToApprove = resp.data;
+					PurchaseRequestToApprove.Status = status;
+					ChangePurchaseRequest(PurchaseRequestToApprove);
+				},
+				function(err) {
+					console.log(err);
+				}
+			)
+	}
+	var ChangePurchaseRequest = function(PurchaseRequest) {
+		PurchaseRequestSvc.Change(PurchaseRequest)
+		.then(
+			function(resp) {
+				console.log(status, resp);
+				$location.path("/PurchaseRequests/review");
+			},
+			function(err) {
+				console.log(err);
+			}
+		)
+	}
 }
 

@@ -1,0 +1,22 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+</div>
+<div>
+
+<h1>Login Page</h1>
+
+
+  <label>User name</label>
+  <input type="text" ng-model="ctrl.username" class="ng-pristine ng-valid">
+  <label>Password</label>
+  <input type="password" ng-model="ctrl.password" class="ng-pristine ng-valid">
+  <br/>
+
+  <br/><br/>
+  <button class="btn btn-success" ng-click="ctrl.Login(ctrl.username, ctrl.password)">Submit</button>
+  <label ng-bind="ctrl.Authenticated">
+
+
+
+</div>
+

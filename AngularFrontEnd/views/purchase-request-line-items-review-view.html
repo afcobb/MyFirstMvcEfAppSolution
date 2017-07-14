@@ -1,0 +1,43 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+</div>
+	<table class="table">
+			<thead>
+				<td>ID</td>
+				<td>Description</td>
+				<td>Justification</td>
+				<td>Total</td>
+				</tr>
+			</thead>
+		<tbody>
+		<tr>
+			<td><span ng-bind="ctrl.SelectedPurchaseRequest.ID"></span></td>
+			<td><span ng-bind="ctrl.SelectedPurchaseRequest.Description"></span></td>
+			<td><span ng-bind="ctrl.SelectedPurchaseRequest.Justification"></span></td>
+			<td><span ng-bind="ctrl.SelectedPurchaseRequest.Total"></span></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Product</td>
+					<td>Quantity</td>
+					<td>Price</td>
+					<td>Line Total</td>	
+				</tr>		
+			</thead>
+		<tbody>
+				<tr ng-repeat="PurchaseRequestLineItem in ctrl.PurchaseRequestLineItems">
+					<td><span ng-bind="PurchaseRequestLineItem.Product.Name"></span></td>
+					<td><span ng-bind="PurchaseRequestLineItem.Quantity"></span></td>
+					<td><span ng-bind="PurchaseRequestLineItem.Product.Price"></span></td>
+					<td><span>{{PurchaseRequestLineItem.Quantity * PurchaseRequestLineItem.Product.Price}}</span></td>
+					</td>
+
+			</tbody>
+			</table>
+			<button ng-click="ctrl.Approve(ctrl.SelectedPurchaseRequest.ID)">Approve</button>
+			<button ng-click="ctrl.Reject(ctrl.SelectedPurchaseRequest.ID)">Reject</button>
